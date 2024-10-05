@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlkosvyvata8f"]
+
+[ext_resource type="Script" path="res://player_ship.gd" id="1_2tniu"]
+[ext_resource type="PackedScene" uid="uid://cud61htxj6j3q" path="res://player_bullet.tscn" id="2_2tg6h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7hsv0"]
+radius = 8.0
+
+[node name="PlayerShip" type="CharacterBody2D"]
+collision_mask = 10
+motion_mode = 1
+script = ExtResource("1_2tniu")
+bullet_scene = ExtResource("2_2tg6h")
+bullet_damage = 5.0
+bullet_speed = 300.0
+bullet_life_time = 5.0
+bullet_ammount = 3
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+rotation = 1.5708
+offset = Vector2(0, 8)
+polygon = PackedVector2Array(-16, 0, -16, -8, -8, -16, -2, -16, -2, -20, 2, -20, 2, -16, 8, -16, 16, -8, 16, 0)
+
+[node name="BulletMarker" type="Marker2D" parent="Polygon2D"]
+unique_name_in_owner = true
+show_behind_parent = true
+position = Vector2(-2.89599e-05, -8)
+rotation = -1.5708
+
+[node name="Line2D" type="Line2D" parent="Polygon2D/BulletMarker"]
+show_behind_parent = true
+points = PackedVector2Array(3, -2.18279e-11, 1592, -2.18279e-11)
+width = 2.0
+default_color = Color(0.866667, 0, 0.172549, 0.466667)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_7hsv0")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

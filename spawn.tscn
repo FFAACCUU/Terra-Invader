@@ -1,0 +1,108 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm0btgcw44e0l"]
+
+[ext_resource type="Script" path="res://spawn.gd" id="1_7ika7"]
+
+[node name="spawn" type="Node2D"]
+position = Vector2(800, 450)
+script = ExtResource("1_7ika7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(0, -386)
+
+[node name="Marker2D2" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(99.904, -372.847)
+rotation = 0.261799
+
+[node name="Marker2D3" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(193, -334.286)
+rotation = 0.523598
+
+[node name="Marker2D4" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(272.943, -272.944)
+rotation = 0.785397
+
+[node name="Marker2D5" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(334.286, -193)
+rotation = 1.0472
+
+[node name="Marker2D6" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(372.847, -99.9048)
+rotation = 1.309
+
+[node name="Marker2D7" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(386, -0.000854492)
+rotation = 1.57079
+
+[node name="Marker2D8" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(372.848, 99.9031)
+rotation = 1.83259
+
+[node name="Marker2D9" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(334.286, 192.999)
+rotation = 2.09439
+
+[node name="Marker2D10" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(272.944, 272.942)
+rotation = 2.35619
+
+[node name="Marker2D11" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(193.001, 334.285)
+rotation = 2.61799
+
+[node name="Marker2D12" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(99.9057, 372.847)
+rotation = 2.87979
+
+[node name="Marker2D13" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(0.00183105, 386)
+rotation = 3.14159
+
+[node name="Marker2D14" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(-99.9023, 372.848)
+rotation = -2.8798
+
+[node name="Marker2D15" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(-192.998, 334.287)
+rotation = -2.618
+
+[node name="Marker2D16" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(-272.942, 272.945)
+rotation = -2.3562
+
+[node name="Marker2D17" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(-334.285, 193.002)
+rotation = -2.0944
+
+[node name="Marker2D18" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(-372.847, 99.9066)
+rotation = -1.8326
+
+[node name="Marker2D19" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(-386, 0.00262451)
+rotation = -1.5708
+
+[node name="Marker2D20" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(-372.848, -99.9014)
+rotation = -1.309
+
+[node name="Marker2D21" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(-334.287, -192.997)
+rotation = -1.04721
+
+[node name="Marker2D22" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(-272.945, -272.941)
+rotation = -0.785406
+
+[node name="Marker2D23" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(-193.003, -334.284)
+rotation = -0.523607
+
+[node name="Marker2D24" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(-99.9074, -372.846)
+rotation = -0.261808
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
