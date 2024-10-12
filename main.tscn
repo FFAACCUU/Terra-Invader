@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://cy1ooxcfun7ue"]
 
-[ext_resource type="PackedScene" uid="uid://dlkosvyvata8f" path="res://player_ship.tscn" id="1_7ulvc"]
-[ext_resource type="Script" path="res://main.gd" id="1_ekwdi"]
-[ext_resource type="PackedScene" uid="uid://cm0btgcw44e0l" path="res://spawn.tscn" id="3_8s8qt"]
+[ext_resource type="PackedScene" uid="uid://dlkosvyvata8f" path="res://objetos/jugador/player_ship.tscn" id="1_7ulvc"]
+[ext_resource type="Script" path="res://niveles/main.gd" id="1_ekwdi"]
+[ext_resource type="PackedScene" uid="uid://cm0btgcw44e0l" path="res://objetos/misc/spawner/spawn.tscn" id="3_8s8qt"]
 
 [sub_resource type="Gradient" id="Gradient_ic6fo"]
 interpolation_color_space = 1

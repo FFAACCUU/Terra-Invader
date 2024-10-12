@@ -43,7 +43,7 @@ func set_bullet_postion(bullet : Node, offset):
 	bullet.global_position = bullet_marker.global_position
 	bullet.global_rotation_degrees = bullet_marker.global_rotation_degrees + offset
 	bullet.visuals.scale = Vector2(bullet_damage * 0.2, bullet_damage * 0.2)
-	bullet.collider.scale = bullet.visuals.scale
+	bullet.hitbox.scale = bullet.visuals.scale
 
 func set_bullet_params(bullet : Node):
 	bullet.damage = bullet_damage

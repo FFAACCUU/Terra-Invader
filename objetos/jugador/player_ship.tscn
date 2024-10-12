@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dlkosvyvata8f"]
 
-[ext_resource type="Script" path="res://player_ship.gd" id="1_2tniu"]
-[ext_resource type="PackedScene" uid="uid://cud61htxj6j3q" path="res://player_bullet.tscn" id="2_2tg6h"]
+[ext_resource type="Script" path="res://objetos/jugador/player_ship.gd" id="1_2tniu"]
+[ext_resource type="PackedScene" uid="uid://cud61htxj6j3q" path="res://objetos/proyectiles/player_bullet.tscn" id="2_2tg6h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7hsv0"]
 radius = 8.0

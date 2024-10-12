@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var main = get_node("/root/Main")
 
-var enemigo_escena := preload("res://enemy_basic.tscn")
+var enemigo_escena := preload("res://objetos/enemigos/basico/enemy_basic.tscn")
 var spawn_points := []
 
 # Called when the node enters the scene tree for the first time.

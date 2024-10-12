@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cm0btgcw44e0l"]
 
-[ext_resource type="Script" path="res://spawn.gd" id="1_7ika7"]
+[ext_resource type="Script" path="res://objetos/misc/spawner/spawn.gd" id="1_7ika7"]
 
 [node name="spawn" type="Node2D"]
 position = Vector2(800, 450)
