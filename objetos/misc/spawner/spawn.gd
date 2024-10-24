@@ -7,6 +7,9 @@ var spawn_points := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	SignalBus.connect("round_end", on_round_end)
+	SignalBus.connect("round_start", on_round_start)
+	
 	for i in get_children():
 		if i is Marker2D:
 			spawn_points.append(i)
@@ -16,3 +19,9 @@ func _on_timer_timeout():
 	var enemigo = enemigo_escena.instantiate()
 	enemigo.position = spawn.position
 	main.add_child(enemigo)
+
+func on_round_end(_round : int):
+	$Timer.stop()
+
+func on_round_start():
+	$Timer.start()

@@ -9,8 +9,10 @@ class_name Bullet
 
 @onready var visuals : Polygon2D = $Polygon2D
 @onready var hitbox : Area2D = $HitBox
+@onready var hit_detector : Area2D = $HitDetector
 
 func _ready() -> void:
+	top_level = true
 	death_timer.wait_time = life_time
 	death_timer.start()
 	hitbox.damage = damage
@@ -20,4 +22,7 @@ func _physics_process(delta):
 	speed -= speed * 0.01
 
 func _on_death_timer_timeout() -> void:
+	queue_free()
+
+func _on_hit_detector_area_entered(area):
 	queue_free()

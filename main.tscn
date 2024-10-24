@@ -1,8 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://cy1ooxcfun7ue"]
+[gd_scene load_steps=14 format=3 uid="uid://cy1ooxcfun7ue"]
 
 [ext_resource type="PackedScene" uid="uid://dlkosvyvata8f" path="res://objetos/jugador/player_ship.tscn" id="1_7ulvc"]
 [ext_resource type="Script" path="res://niveles/main.gd" id="1_ekwdi"]
+[ext_resource type="Script" path="res://objetos/misc/sun.gd" id="2_f62lb"]
+[ext_resource type="Script" path="res://objetos/misc/round_timer.gd" id="3_8mgf5"]
 [ext_resource type="PackedScene" uid="uid://cm0btgcw44e0l" path="res://objetos/misc/spawner/spawn.tscn" id="3_8s8qt"]
+[ext_resource type="PackedScene" uid="uid://y6mgo61gjri6" path="res://objetos/misc/upgrade.tscn" id="6_fg3nk"]
+
+[sub_resource type="Gradient" id="Gradient_omyy5"]
+interpolation_mode = 2
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0.766234, 1)
+colors = PackedColorArray(1, 0.615686, 0.584314, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qle1j"]
+gradient = SubResource("Gradient_omyy5")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_ic6fo"]
 interpolation_color_space = 1
@@ -37,6 +54,27 @@ radius = 34.6554
 position = Vector2(800, 450)
 script = ExtResource("1_ekwdi")
 
+[node name="Label" type="Label" parent="."]
+offset_left = 608.0
+offset_top = -322.0
+offset_right = 672.0
+offset_bottom = -255.0
+theme_override_font_sizes/font_size = 48
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sun" type="Sprite2D" parent="." node_paths=PackedStringArray("round_timer")]
+texture = SubResource("GradientTexture2D_qle1j")
+script = ExtResource("2_f62lb")
+round_timer = NodePath("../RoundTimer")
+
+[node name="RoundTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+script = ExtResource("3_8mgf5")
+
 [node name="PlayerShip" parent="." instance=ExtResource("1_7ulvc")]
 distance = 60.0
 
@@ -62,4 +100,8 @@ shape = SubResource("CircleShape2D_jj8em")
 [node name="spawn" parent="." instance=ExtResource("3_8s8qt")]
 position = Vector2(0, -1)
 
+[node name="Upgrade" parent="." instance=ExtResource("6_fg3nk")]
+position = Vector2(0, 86)
+
+[connection signal="timeout" from="RoundTimer" to="." method="_on_round_timer_timeout"]
 [connection signal="body_entered" from="Planet/Area2D" to="." method="_on_area_2d_body_entered"]

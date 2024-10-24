@@ -14,13 +14,22 @@ extends CharacterBody2D
 
 var can_shoot : bool = true
 
+var upgrades : Array[BaseUpgradeStrategy] = []:
+	set(get_upgrades):
+		apply_upgrades()
+
 func _ready():
 	$Polygon2D.position.x = distance
 	$CollisionShape2D.position.x = distance
+	apply_upgrades()
 
-func _process(delta):
+func _process(_delta):
 	if can_shoot && Input.is_action_pressed("Shoot"):
 		shoot()
+
+func apply_upgrades():
+	for strategy in upgrades:
+		strategy.apply_upgrade(self)
 
 func _physics_process(delta):
 	move(delta, get_global_mouse_position())
@@ -28,6 +37,8 @@ func _physics_process(delta):
 func move(delta : float, target : Vector2):
 	var vector = target - global_position
 	var angle = vector.angle()
+	
+	#Rota la nave y el bullet marker hacia el mouse.
 	global_rotation = lerp_angle(global_rotation, angle, Input.get_last_mouse_velocity().limit_length(speed).length() + speed)
 	bullet_marker.global_rotation = lerp_angle(bullet_marker.global_rotation, angle, Input.get_last_mouse_velocity().limit_length(0.1).length() + 0.2)
 
@@ -37,13 +48,14 @@ func shoot():
 	shoot_timer.start(fire_rate)
 
 func create_bullet():
-	shoot_multiple(10.0)
+	shoot_multiple(5.0)
 
 func set_bullet_postion(bullet : Node, offset):
 	bullet.global_position = bullet_marker.global_position
 	bullet.global_rotation_degrees = bullet_marker.global_rotation_degrees + offset
 	bullet.visuals.scale = Vector2(bullet_damage * 0.2, bullet_damage * 0.2)
 	bullet.hitbox.scale = bullet.visuals.scale
+	bullet.hit_detector.scale = bullet.visuals.scale
 
 func set_bullet_params(bullet : Node):
 	bullet.damage = bullet_damage
@@ -53,10 +65,10 @@ func set_bullet_params(bullet : Node):
 func _on_shoot_timer_timeout():
 	can_shoot = true
 
-func shoot_multiple(offset : float):
+func shoot_multiple(offset : float): #Dispara la misma cantidad de balas que bullet ammoun y calcula un offset para cada una.
 	var current_offset : float = offset * 2
 	instantiate_bullet(0)
-	for i in bullet_ammount - 1: #Reemplazar con variable, añadir un -1 tambien (bul_ammount - 1)
+	for i in bullet_ammount - 1:
 		instantiate_bullet(current_offset)
 		if current_offset > 0:
 			current_offset = (current_offset + offset) * -1
@@ -66,5 +78,5 @@ func shoot_multiple(offset : float):
 func instantiate_bullet(current_offset : float):
 	var bullet_instance = bullet_scene.instantiate()
 	set_bullet_params(bullet_instance)
-	get_tree().root.add_child(bullet_instance)
+	add_child(bullet_instance)
 	set_bullet_postion(bullet_instance, current_offset)
