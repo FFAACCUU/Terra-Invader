@@ -14,7 +14,7 @@ var factor : int = 300
 @onready var hurt_box = $HurtBox
 @onready var despawn_timer = $DespawnTimer
 
-@export var speed : float = 15
+@export var speed : float = 10
 
 func _ready() -> void:
 	SignalBus.connect("round_end", on_round_end)
@@ -39,8 +39,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func move(delta : float):
-	velocity += transform.y * curve_movement() * delta
-	velocity += transform.x * (speed + (factor * 0.2)) * delta
+	velocity += ((transform.y * curve_movement()) + (transform.x * (speed + (factor * 0.1)))) * delta
 
 func on_round_end(round : int):
 	velocity = Vector2.ZERO
