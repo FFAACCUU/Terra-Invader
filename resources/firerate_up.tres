@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="FireRateUpgrade" load_steps=2 format=3 uid="uid://cdexgap3ihssx"]
+
+[ext_resource type="Script" path="res://clases/upgrades/firerate_up.gd" id="1_38e1y"]
+
+[resource]
+script = ExtResource("1_38e1y")
+firerate_increase = 0.5

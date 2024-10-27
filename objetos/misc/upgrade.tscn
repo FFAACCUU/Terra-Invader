@@ -1,16 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://y6mgo61gjri6"]
+[gd_scene load_steps=8 format=3 uid="uid://y6mgo61gjri6"]
 
 [ext_resource type="Script" path="res://objetos/misc/upgrade.gd" id="1_0remc"]
 [ext_resource type="Script" path="res://clases/upgrades/base_upgrade_strategy.gd" id="2_bn8gw"]
 [ext_resource type="Resource" uid="uid://c7t70lh58h0il" path="res://resources/damage_up.tres" id="3_larmp"]
 [ext_resource type="Resource" uid="uid://c0eh7tkka5kq5" path="res://resources/multishot.tres" id="4_ime3v"]
+[ext_resource type="Script" path="res://clases/upgrades/firerate_up.gd" id="5_2yabu"]
+
+[sub_resource type="Resource" id="Resource_rb8ih"]
+script = ExtResource("5_2yabu")
+firerate_increase = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u2gy4"]
 radius = 24.0
 
 [node name="Upgrade" type="Node2D"]
 script = ExtResource("1_0remc")
-upgrade_resources = Array[ExtResource("2_bn8gw")]([ExtResource("3_larmp"), ExtResource("4_ime3v")])
+upgrade_resources = Array[ExtResource("2_bn8gw")]([ExtResource("3_larmp"), ExtResource("4_ime3v"), SubResource("Resource_rb8ih")])
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32

@@ -21,6 +21,7 @@ script = ExtResource("1_hw2ha")
 max_health = 10.0
 movement_curve = SubResource("Curve_w1kwl")
 process_x = true
+process_y = null
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 material = SubResource("CanvasItemMaterial_kt7i0")

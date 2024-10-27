@@ -51,6 +51,7 @@ metadata/_snap_enabled = true
 radius = 34.6554
 
 [node name="Main" type="Node2D"]
+process_mode = 1
 position = Vector2(800, 450)
 script = ExtResource("1_ekwdi")
 
@@ -70,7 +71,7 @@ script = ExtResource("2_f62lb")
 round_timer = NodePath("../RoundTimer")
 
 [node name="RoundTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 one_shot = true
 autostart = true
 script = ExtResource("3_8mgf5")
