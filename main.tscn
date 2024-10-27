@@ -73,6 +73,7 @@ round_timer = NodePath("../RoundTimer")
 [node name="RoundTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+autostart = true
 script = ExtResource("3_8mgf5")
 
 [node name="PlayerShip" parent="." instance=ExtResource("1_7ulvc")]
