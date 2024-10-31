@@ -1,17 +1,77 @@
-[gd_scene load_steps=4 format=3 uid="uid://cud61htxj6j3q"]
+[gd_scene load_steps=14 format=3 uid="uid://cud61htxj6j3q"]
 
 [ext_resource type="Script" path="res://clases/bullet.gd" id="1_fb2ur"]
 [ext_resource type="Script" path="res://clases/hitbox.gd" id="2_d1h6d"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ji5vc"]
-size = Vector2(10, 6)
+[sub_resource type="Gradient" id="Gradient_h6t0j"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.813897, 0.68887, 0.603274, 1, 0.258824, 0, 0.0235294, 1, 0.258824, 0, 0.0235294, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c2yuw"]
+gradient = SubResource("Gradient_h6t0j")
+
+[sub_resource type="Curve" id="Curve_rqfqr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jfmum"]
+curve = SubResource("Curve_rqfqr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ye6me"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 1, 0)
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_jfmum")
+color_ramp = SubResource("GradientTexture1D_c2yuw")
+hue_variation_min = -0.02
+hue_variation_max = 0.06
+
+[sub_resource type="Gradient" id="Gradient_h2n4e"]
+offsets = PackedFloat32Array(0.4, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jlydx"]
+gradient = SubResource("Gradient_h2n4e")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_effbc"]
+offsets = PackedFloat32Array(0.7, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_338mc"]
+gradient = SubResource("Gradient_effbc")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aewp0"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0m1v0"]
+radius = 6.0
 
 [node name="PlayerBullet" type="Node2D"]
 script = ExtResource("1_fb2ur")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(1, 0.466667, 0.513726, 1)
-polygon = PackedVector2Array(0, 3, 0, -3, 10, -3, 10, 3)
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Visuals"]
+amount = 45
+process_material = SubResource("ParticleProcessMaterial_ye6me")
+texture = SubResource("GradientTexture2D_jlydx")
+lifetime = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = SubResource("GradientTexture2D_338mc")
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 4
@@ -20,8 +80,7 @@ monitoring = false
 script = ExtResource("2_d1h6d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(5, 0)
-shape = SubResource("RectangleShape2D_ji5vc")
+shape = SubResource("CircleShape2D_aewp0")
 
 [node name="HitDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -29,8 +88,7 @@ collision_mask = 8
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector"]
-position = Vector2(5, 0)
-shape = SubResource("RectangleShape2D_ji5vc")
+shape = SubResource("CircleShape2D_0m1v0")
 
 [node name="DeathTimer" type="Timer" parent="."]
 one_shot = true

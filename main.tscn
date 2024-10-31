@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://objetos/misc/sun.gd" id="2_f62lb"]
 [ext_resource type="Script" path="res://objetos/misc/round_timer.gd" id="3_8mgf5"]
 [ext_resource type="PackedScene" uid="uid://cm0btgcw44e0l" path="res://objetos/misc/spawner/spawn.tscn" id="3_8s8qt"]
-[ext_resource type="PackedScene" uid="uid://y6mgo61gjri6" path="res://objetos/misc/upgrade.tscn" id="6_fg3nk"]
+[ext_resource type="PackedScene" uid="uid://kkvcl8tmed31" path="res://ui/menu_mejoras.tscn" id="11_biqr2"]
 
 [sub_resource type="Gradient" id="Gradient_omyy5"]
 interpolation_mode = 2
@@ -101,8 +101,10 @@ shape = SubResource("CircleShape2D_jj8em")
 [node name="spawn" parent="." instance=ExtResource("3_8s8qt")]
 position = Vector2(0, -1)
 
-[node name="Upgrade" parent="." instance=ExtResource("6_fg3nk")]
-position = Vector2(0, 86)
+[node name="MenuMejoras" parent="." instance=ExtResource("11_biqr2")]
+process_mode = 3
+visible = false
+top_level = true
 
 [connection signal="timeout" from="RoundTimer" to="." method="_on_round_timer_timeout"]
 [connection signal="body_entered" from="Planet/Area2D" to="." method="_on_area_2d_body_entered"]

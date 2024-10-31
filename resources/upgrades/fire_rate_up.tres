@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=6 format=3 uid="uid://2a7vyj0gq3ay"]
+
+[ext_resource type="Script" path="res://clases/upgrades/upgrade.gd" id="1_pdwxh"]
+[ext_resource type="Texture2D" uid="uid://6flllq0qgbl" path="res://icon.svg" id="1_tlxdx"]
+[ext_resource type="Script" path="res://clases/upgrades/base_upgrade_strategy.gd" id="2_354xb"]
+[ext_resource type="Script" path="res://clases/upgrades/firerate_up.gd" id="4_117la"]
+
+[sub_resource type="Resource" id="Resource_2tnlr"]
+script = ExtResource("4_117la")
+firerate_increase = 0.5
+
+[resource]
+script = ExtResource("1_pdwxh")
+upgrd_name = "Gatillo facil"
+icon = ExtResource("1_tlxdx")
+upgrade_resources = Array[ExtResource("2_354xb")]([SubResource("Resource_2tnlr")])

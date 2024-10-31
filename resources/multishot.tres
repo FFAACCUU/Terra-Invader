@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="MultishotUpgrade" load_steps=2 format=3 uid="uid://c0eh7tkka5kq5"]
-
-[ext_resource type="Script" path="res://clases/upgrades/multishot.gd" id="1_2y6ow"]
-
-[resource]
-script = ExtResource("1_2y6ow")
-ammount_increase = 2

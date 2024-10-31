@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://kkvcl8tmed31"]
+
+[ext_resource type="Script" path="res://ui/menu_mejoras.gd" id="1_qmsp2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dugib"]
+bg_color = Color(0.141176, 0, 0.439216, 0.25098)
+
+[node name="MenuMejoras" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qmsp2")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 256.0
+offset_top = 128.0
+offset_right = -256.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dugib")
+
+[node name="UpgradesContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2

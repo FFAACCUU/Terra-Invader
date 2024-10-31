@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="DamageUpgrade" load_steps=2 format=3 uid="uid://c7t70lh58h0il"]
-
-[ext_resource type="Script" path="res://clases/upgrades/damage_up.gd" id="1_i4sc7"]
-
-[resource]
-script = ExtResource("1_i4sc7")
-damage_increase = 2.0

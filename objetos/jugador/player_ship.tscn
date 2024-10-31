@@ -25,7 +25,7 @@ polygon = PackedVector2Array(-16, 0, -16, -8, -8, -16, -2, -16, -2, -20, 2, -20,
 [node name="BulletMarker" type="Marker2D" parent="Polygon2D"]
 unique_name_in_owner = true
 show_behind_parent = true
-position = Vector2(-2.89599e-05, -8)
+position = Vector2(2.18279e-11, 0)
 rotation = -1.5708
 
 [node name="Line2D" type="Line2D" parent="Polygon2D/BulletMarker"]

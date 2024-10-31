@@ -14,18 +14,21 @@ extends CharacterBody2D
 
 var can_shoot : bool = true
 
-var upgrades : Array[BaseUpgradeStrategy] = []:
-	set(get_upgrades):
-		apply_upgrades()
+var upgrades : Array[BaseUpgradeStrategy] = []
 
 func _ready():
 	$Polygon2D.position.x = distance
 	$CollisionShape2D.position.x = distance
 	apply_upgrades()
+	SignalBus.connect("upgrade_get", _on_get_upgrade)
 
 func _process(_delta):
 	if can_shoot && Input.is_action_pressed("Shoot"):
 		shoot()
+
+func _on_get_upgrade(upgrade : Upgrade):
+	upgrades.append_array(upgrade.upgrade_resources)
+	apply_upgrades()
 
 func apply_upgrades():
 	for strategy in upgrades:
@@ -46,6 +49,7 @@ func shoot():
 	can_shoot = false
 	create_bullet()
 	shoot_timer.start(fire_rate)
+	print(bullet_damage)
 
 func create_bullet():
 	shoot_multiple(5.0)
@@ -53,9 +57,10 @@ func create_bullet():
 func set_bullet_postion(bullet : Node, offset):
 	bullet.global_position = bullet_marker.global_position
 	bullet.global_rotation_degrees = bullet_marker.global_rotation_degrees + offset
-	bullet.visuals.scale = Vector2(bullet_damage * 0.2, bullet_damage * 0.2)
-	bullet.hitbox.scale = bullet.visuals.scale
-	bullet.hit_detector.scale = bullet.visuals.scale
+	var bullet_scale := Vector2((bullet_damage * 0.05) + 0.1, (bullet_damage * 0.05) + 0.1).clamp(Vector2(0.5, 0.5), Vector2(5.0, 5.0))
+	bullet.visuals.scale = bullet_scale
+	bullet.hitbox.scale = bullet_scale
+	bullet.hit_detector.scale = bullet_scale
 
 func set_bullet_params(bullet : Node):
 	bullet.damage = bullet_damage

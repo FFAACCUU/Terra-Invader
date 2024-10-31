@@ -7,7 +7,7 @@ class_name Bullet
 @export var speed : float
 @export var life_time : float
 
-@onready var visuals : Polygon2D = $Polygon2D
+@onready var visuals: Node2D = $Visuals
 @onready var hitbox : Area2D = $HitBox
 @onready var hit_detector : Area2D = $HitDetector
 
