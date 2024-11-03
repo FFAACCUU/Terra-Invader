@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_v3eio"]
 script = ExtResource("4_ut71y")
-ammount_increase = 2
+ammount_increase = 1
 
 [resource]
 script = ExtResource("1_0hgw6")

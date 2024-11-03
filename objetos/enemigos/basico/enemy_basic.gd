@@ -2,12 +2,7 @@ extends CharacterBody2D
 
 @export var max_health : float
 
-@export var movement_curve : Curve
-var time : float = 0
-var curve_dir : int = 1
-var factor : int = 300
-@export var process_x : bool = false
-@export var process_y : bool = false
+
 
 @onready var health : float = max_health
 
@@ -15,6 +10,14 @@ var factor : int = 300
 @onready var despawn_timer = $DespawnTimer
 
 @export var speed : float = 10
+
+@export_category("Movement curve")
+@export var movement_curve : Curve
+var time : float = 0
+var curve_dir : int = 1
+@export var factor : int = 0
+@export var process_x : bool = false
+@export var process_y : bool = false
 
 func _ready() -> void:
 	SignalBus.connect("round_end", on_round_end)
@@ -39,7 +42,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func move(delta : float):
-	velocity += ((transform.y * curve_movement()) + (transform.x * (speed + (factor * 0.1)))) * delta
+	velocity += ((transform.y * do_the_curve()) + (transform.x * (speed + (factor * 0.1)))) * delta
 
 func on_round_end(round : int):
 	velocity = Vector2.ZERO
@@ -51,14 +54,19 @@ func on_round_end(round : int):
 func _on_despawn_timer_timeout():
 	queue_free()
 
+func do_the_curve() -> float:
+	if movement_curve != null:
+		return curve_movement()
+	else:
+		return 1.0
+
 func calculate_curve_time(delta : float):
-	if movement_curve:
+	if movement_curve != null:
 		time += delta * curve_dir
 		
 		if time > 1: curve_dir = -1
 		elif time < 0: curve_dir = 1
 		time = clamp(time, 0, 1)
-	
 
 func curve_movement() -> float:
 	if process_x:

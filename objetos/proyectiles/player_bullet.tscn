@@ -63,6 +63,7 @@ radius = 6.0
 script = ExtResource("1_fb2ur")
 
 [node name="Visuals" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Visuals"]
 amount = 45
@@ -74,6 +75,7 @@ lifetime = 2.0
 texture = SubResource("GradientTexture2D_338mc")
 
 [node name="HitBox" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 4
 collision_mask = 0
 monitoring = false
@@ -83,6 +85,7 @@ script = ExtResource("2_d1h6d")
 shape = SubResource("CircleShape2D_aewp0")
 
 [node name="HitDetector" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 8
 monitorable = false

@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_2tnlr"]
 script = ExtResource("4_117la")
-firerate_increase = 0.5
+firerate_increase = 0.05
 
 [resource]
 script = ExtResource("1_pdwxh")

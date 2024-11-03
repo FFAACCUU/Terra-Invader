@@ -7,9 +7,9 @@ class_name Bullet
 @export var speed : float
 @export var life_time : float
 
-@onready var visuals: Node2D = $Visuals
-@onready var hitbox : Area2D = $HitBox
-@onready var hit_detector : Area2D = $HitDetector
+@onready var visuals: Node2D = %Visuals
+@onready var hitbox : Area2D = %HitBox
+@onready var hit_detector : Area2D = %HitDetector
 
 func _ready() -> void:
 	top_level = true
@@ -20,6 +20,15 @@ func _ready() -> void:
 func _physics_process(delta):
 	global_position += transform.x * speed * delta
 	speed -= speed * 0.01
+
+func set_parameters(new_scale : Vector2, dmg : float, spd : float, lftm : float):
+	damage = dmg
+	speed = spd
+	life_time = lftm
+	
+	%Visuals.scale = new_scale
+	%HitBox.scale = new_scale
+	%HitDetector.scale = new_scale
 
 func _on_death_timer_timeout() -> void:
 	queue_free()
