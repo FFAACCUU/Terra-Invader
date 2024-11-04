@@ -5,6 +5,7 @@ var vida : int = 5
 var current_round : int = 1
 
 @onready var label = $Label
+@onready var vidas_restantes = $VidasRestantes
 
 func _ready():
 	update_round_text()
@@ -15,9 +16,13 @@ func update_round_text():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	body.queue_free()
 	vida -= 1
+	actualizar_vidas_actuales()
 	if vida <= 0:
 		vida = 0
 		get_tree().quit()
+
+func actualizar_vidas_actuales():
+	vidas_restantes.text = str(vida)
 
 func _on_round_timer_timeout():
 	current_round += 1
