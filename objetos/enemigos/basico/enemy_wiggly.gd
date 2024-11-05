@@ -6,14 +6,6 @@ extends Enemy
 func _ready() -> void:
 	SignalBus.connect("round_end", on_round_end)
 
-func take_damage(ammount : float):
-	health -= ammount
-	if health <= 0:
-		die()
-
-func die():
-	queue_free()
-
 func _process(delta):
 	calculate_curve_time(delta)
 
@@ -22,6 +14,14 @@ func _physics_process(delta: float) -> void:
 	move(delta)
 	
 	move_and_slide()
+
+func take_damage(ammount : float):
+	health -= ammount
+	if health <= 0:
+		die()
+
+func die():
+	queue_free()
 
 func on_round_end(round : int):
 	velocity = Vector2.ZERO

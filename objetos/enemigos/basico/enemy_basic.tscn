@@ -14,7 +14,10 @@ collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_hw2ha")
 max_health = 10.0
+speed = 15.0
+factor = null
 process_x = true
+process_y = null
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 material = SubResource("CanvasItemMaterial_kt7i0")

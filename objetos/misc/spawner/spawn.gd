@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var main = get_node("/root/Main")
 
-var enemigo_escena := preload("res://objetos/enemigos/basico/enemy_basic.tscn")
+var enemigo_escena : Array = [preload("res://objetos/enemigos/basico/enemy_basic.tscn"), preload("res://objetos/enemigos/basico/enemy_wiggly.tscn")]
 var spawn_points := []
 
 # Called when the node enters the scene tree for the first time.
@@ -16,7 +16,7 @@ func _ready():
 
 func _on_timer_timeout():
 	var spawn = spawn_points [randi() % spawn_points.size()]
-	var enemigo = enemigo_escena.instantiate()
+	var enemigo = enemigo_escena.pick_random().instantiate()
 	enemigo.position = spawn.position
 	main.add_child(enemigo)
 
