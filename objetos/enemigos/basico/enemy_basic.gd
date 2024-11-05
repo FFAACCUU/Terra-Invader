@@ -18,7 +18,7 @@ func _process(delta):
 	calculate_curve_time(delta)
 
 func _physics_process(delta: float) -> void:
-	look_at(Vector2(800, 450))
+	look_at(Vector2(816.0, 480.0))
 	move(delta)
 	
 	move_and_slide()

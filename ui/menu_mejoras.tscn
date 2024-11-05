@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/menu_mejoras.gd" id="1_qmsp2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dugib"]
-bg_color = Color(0.141176, 0, 0.439216, 0.25098)
+bg_color = Color(0.364706, 0, 0.439216, 0.494118)
 
 [node name="MenuMejoras" type="Control"]
 layout_mode = 3
