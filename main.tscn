@@ -1,11 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://cy1ooxcfun7ue"]
+[gd_scene load_steps=21 format=3 uid="uid://cy1ooxcfun7ue"]
 
 [ext_resource type="PackedScene" uid="uid://dlkosvyvata8f" path="res://objetos/jugador/player_ship.tscn" id="1_7ulvc"]
 [ext_resource type="Script" path="res://niveles/main.gd" id="1_ekwdi"]
+[ext_resource type="Script" path="res://fondo_en_movimiento.gd" id="2_evtmq"]
 [ext_resource type="Script" path="res://objetos/misc/sun.gd" id="2_f62lb"]
 [ext_resource type="Script" path="res://objetos/misc/round_timer.gd" id="3_8mgf5"]
 [ext_resource type="PackedScene" uid="uid://cm0btgcw44e0l" path="res://objetos/misc/spawner/spawn.tscn" id="3_8s8qt"]
+[ext_resource type="Texture2D" uid="uid://blrlbd2hgfyge" path="res://fondo/FondoAzul.png" id="7_ej1ke"]
+[ext_resource type="Texture2D" uid="uid://b5pwjhj61plex" path="res://fondo/Estrellas.png" id="8_w2lri"]
+[ext_resource type="Texture2D" uid="uid://bi5kjkm1607yi" path="res://fondo/PlanetaChico.png" id="9_dj45x"]
+[ext_resource type="Texture2D" uid="uid://chr02s1616m62" path="res://fondo/Asteroide2.png" id="10_8bsek"]
+[ext_resource type="Texture2D" uid="uid://duywvymwas8oi" path="res://fondo/PlanetaGrande.png" id="11_5cn48"]
 [ext_resource type="PackedScene" uid="uid://kkvcl8tmed31" path="res://ui/menu_mejoras.tscn" id="11_biqr2"]
+[ext_resource type="Texture2D" uid="uid://br0521a2tyj3v" path="res://fondo/Asteroide1.png" id="12_kcwn3"]
 
 [sub_resource type="Gradient" id="Gradient_omyy5"]
 interpolation_mode = 2
@@ -52,8 +59,58 @@ radius = 34.6554
 
 [node name="Main" type="Node2D"]
 process_mode = 1
-position = Vector2(800, 450)
+position = Vector2(821, 480)
 script = ExtResource("1_ekwdi")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_evtmq")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1632, 0)
+
+[node name="FondoAzul" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("7_ej1ke")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1632, 0)
+
+[node name="Estrellas" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("8_w2lri")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.4, 1.4)
+motion_mirroring = Vector2(1632, 0)
+
+[node name="PlanetaChico" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(203, 379)
+texture = ExtResource("9_dj45x")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(3, 3)
+motion_mirroring = Vector2(1632, 0)
+
+[node name="Asteroide2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(1396, 192)
+texture = ExtResource("10_8bsek")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1632, 0)
+
+[node name="PlanetaGrande" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2(1396, 671)
+texture = ExtResource("11_5cn48")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.8, 1.8)
+motion_mirroring = Vector2(1632, 0)
+
+[node name="Asteroide1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
+position = Vector2(370, 822)
+texture = ExtResource("12_kcwn3")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 608.0
@@ -108,7 +165,7 @@ collision_mask = 10
 shape = SubResource("CircleShape2D_jj8em")
 
 [node name="spawn" parent="." instance=ExtResource("3_8s8qt")]
-position = Vector2(0, -1)
+position = Vector2(0, 0)
 
 [node name="MenuMejoras" parent="." instance=ExtResource("11_biqr2")]
 process_mode = 3
