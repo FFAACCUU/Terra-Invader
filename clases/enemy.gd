@@ -15,7 +15,7 @@ var curve_dir : int = 1
 @export var process_y : bool = false
 
 func move(delta : float):
-	velocity += ((transform.y * do_the_curve()) + (transform.x * (speed + (factor * 0.1)))) * delta
+	velocity = ((transform.y * do_the_curve()) + (transform.x * (speed + (factor * 0.1)))) * delta
 
 func take_damage(ammount : float):
 	# Codigo que se ejecuta al recibir daño

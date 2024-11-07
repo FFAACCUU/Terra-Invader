@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://ji55g00a7dti"]
+
+[ext_resource type="Script" path="res://objetos/enemigos/serpiente/enemy_snake_bit.gd" id="1_vhuou"]
+[ext_resource type="Script" path="res://clases/hurtbox.gd" id="2_pdcgj"]
+
+[sub_resource type="Curve" id="Curve_f2dhn"]
+_data = [Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iaa2q"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_021ge"]
+size = Vector2(48, 48)
+
+[node name="EnemySnakeBit" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_vhuou")
+max_health = 5.0
+speed = 1000.0
+movement_curve = SubResource("Curve_f2dhn")
+factor = 10000
+process_x = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-24, -16, -16, -24, 16, -24, 24, -16, 24, 16, 16, 24, -16, 24, -24, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.12692e-05, 1.23978e-05)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_iaa2q")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("2_pdcgj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1.15076e-05, -1.21593e-05)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_021ge")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

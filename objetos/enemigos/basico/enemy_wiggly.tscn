@@ -22,9 +22,9 @@ collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_t84pp")
 max_health = 5.0
-speed = 20.0
+speed = 7500.0
 movement_curve = SubResource("Curve_8s7mx")
-factor = 400
+factor = 7500
 process_x = true
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
