@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var main = get_node("/root/Main")
-
-var enemigo_escena : Array = [preload("res://objetos/enemigos/basico/enemy_basic.tscn"), preload("res://objetos/enemigos/basico/enemy_wiggly.tscn"), preload("res://objetos/enemigos/serpiente/snake_spawner.tscn")]
+#preload("res://objetos/enemigos/basico/enemy_basic.tscn"), preload("res://objetos/enemigos/basico/enemy_wiggly.tscn"), 
+var enemigo_escena : Array = [preload("res://objetos/enemigos/serpiente/snake_spawner.tscn")]
 var spawn_points := []
 
 # Called when the node enters the scene tree for the first time.

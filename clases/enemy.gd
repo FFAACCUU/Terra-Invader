@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Enemy
 
+signal on_death
+
 @export var max_health : float
 @onready var health : float = max_health
 
