@@ -1,0 +1,154 @@
+[gd_scene load_steps=12 format=3 uid="uid://dmq4l6fqp2ag6"]
+
+[ext_resource type="PackedScene" uid="uid://dlkosvyvata8f" path="res://objetos/jugador/player_ship.tscn" id="1_pjms3"]
+[ext_resource type="Script" path="res://clases/hurtbox.gd" id="2_na8y8"]
+[ext_resource type="Script" path="res://ui/boton_jugar.gd" id="2_uu3de"]
+[ext_resource type="Script" path="res://ui/boton_opciones.gd" id="4_j77j8"]
+[ext_resource type="Script" path="res://ui/boton_salir.gd" id="5_amrik"]
+
+[sub_resource type="Gradient" id="Gradient_a5204"]
+colors = PackedColorArray(0.415686, 0.447059, 1, 1, 0.984314, 0.835294, 0.890196, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_acemc"]
+gradient = SubResource("Gradient_a5204")
+
+[sub_resource type="Gradient" id="Gradient_wjt8d"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 0.662745, 0.701961, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_chasu"]
+gradient = SubResource("Gradient_wjt8d")
+width = 2160
+height = 2160
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f137b"]
+size = Vector2(152, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5w71v"]
+size = Vector2(240, 96)
+
+[node name="MenuPrincipal" type="Node2D"]
+
+[node name="Sky" type="Sprite2D" parent="."]
+position = Vector2(816.264, 480.253)
+rotation = 1.5708
+scale = Vector2(4, 1800)
+texture = SubResource("GradientTexture1D_acemc")
+
+[node name="BigPlanet" type="Sprite2D" parent="."]
+position = Vector2(816, 1667)
+texture = SubResource("GradientTexture2D_chasu")
+
+[node name="PlayerShip" parent="." instance=ExtResource("1_pjms3")]
+position = Vector2(816, 1667)
+distance = 1080.0
+bullet_speed = 600.0
+
+[node name="BotonJugar" type="Node2D" parent="."]
+position = Vector2(816, 216)
+script = ExtResource("2_uu3de")
+
+[node name="Polygon2D2" type="Polygon2D" parent="BotonJugar"]
+position = Vector2(-68, -24)
+polygon = PackedVector2Array(-8, -24, 144, -24, 144, 72, -8, 72)
+
+[node name="Polygon2D" type="Polygon2D" parent="BotonJugar"]
+position = Vector2(-68, -24)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, -16, 136, -16, 136, 64, 0, 64)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BotonJugar"]
+offset_left = -80.0
+offset_top = -35.0
+offset_right = 68.0
+offset_bottom = 53.0
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center] PLAY"
+scroll_active = false
+
+[node name="HurtBox" type="Area2D" parent="BotonJugar" node_paths=PackedStringArray("owner_node")]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("2_na8y8")
+owner_node = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BotonJugar/HurtBox"]
+shape = SubResource("RectangleShape2D_f137b")
+
+[node name="BotonOpciones" type="Node2D" parent="."]
+position = Vector2(1191.55, 265.442)
+rotation = 0.261799
+scale = Vector2(1, 1)
+script = ExtResource("4_j77j8")
+
+[node name="Polygon2D2" type="Polygon2D" parent="BotonOpciones"]
+position = Vector2(-112, -24)
+polygon = PackedVector2Array(-8, -24, 232, -24, 232, 72, -8, 72)
+
+[node name="Polygon2D" type="Polygon2D" parent="BotonOpciones"]
+position = Vector2(-112, -24)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, -16, 224, -16, 224, 64, 0, 64)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BotonOpciones"]
+offset_left = -120.0
+offset_top = -32.0
+offset_right = 104.0
+offset_bottom = 40.0
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center] OPTIONS"
+scroll_active = false
+
+[node name="HurtBox" type="Area2D" parent="BotonOpciones" node_paths=PackedStringArray("owner_node")]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("2_na8y8")
+owner_node = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BotonOpciones/HurtBox"]
+shape = SubResource("RectangleShape2D_5w71v")
+
+[node name="BotonSalir" type="Node2D" parent="."]
+position = Vector2(440.453, 265.442)
+rotation = -0.261799
+scale = Vector2(1, 1)
+script = ExtResource("5_amrik")
+
+[node name="Polygon2D2" type="Polygon2D" parent="BotonSalir"]
+position = Vector2(-68, -24)
+polygon = PackedVector2Array(-8, -24, 144, -24, 144, 72, -8, 72)
+
+[node name="Polygon2D" type="Polygon2D" parent="BotonSalir"]
+position = Vector2(-68, -24)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, -16, 136, -16, 136, 64, 0, 64)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BotonSalir"]
+offset_left = -80.0
+offset_top = -35.0
+offset_right = 68.0
+offset_bottom = 53.0
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center] QUIT"
+scroll_active = false
+
+[node name="HurtBox" type="Area2D" parent="BotonSalir" node_paths=PackedStringArray("owner_node")]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("2_na8y8")
+owner_node = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BotonSalir/HurtBox"]
+shape = SubResource("RectangleShape2D_f137b")
+
+[connection signal="elegir_jugar" from="BotonJugar" to="BotonOpciones" method="_on_boton_jugar_elegir_jugar"]
+[connection signal="elegir_jugar" from="BotonJugar" to="BotonSalir" method="_on_boton_jugar_elegir_jugar"]
+[connection signal="area_entered" from="BotonJugar/HurtBox" to="BotonJugar/HurtBox" method="_on_area_entered"]
+[connection signal="area_entered" from="BotonOpciones/HurtBox" to="BotonOpciones/HurtBox" method="_on_area_entered"]
+[connection signal="area_entered" from="BotonSalir/HurtBox" to="BotonSalir/HurtBox" method="_on_area_entered"]

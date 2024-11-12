@@ -33,10 +33,11 @@ position = Vector2(1.12692e-05, 1.23978e-05)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_iaa2q")
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("owner_node")]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("2_pdcgj")
+owner_node = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(1.15076e-05, -1.21593e-05)
