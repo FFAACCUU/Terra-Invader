@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cy1ooxcfun7ue"]
+[gd_scene load_steps=22 format=3 uid="uid://cy1ooxcfun7ue"]
 
 [ext_resource type="PackedScene" uid="uid://dlkosvyvata8f" path="res://objetos/jugador/player_ship.tscn" id="1_7ulvc"]
 [ext_resource type="Script" path="res://niveles/main.gd" id="1_ekwdi"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://duywvymwas8oi" path="res://fondo/PlanetaGrande.png" id="11_5cn48"]
 [ext_resource type="PackedScene" uid="uid://kkvcl8tmed31" path="res://ui/menu_mejoras.tscn" id="11_biqr2"]
 [ext_resource type="Texture2D" uid="uid://br0521a2tyj3v" path="res://fondo/Asteroide1.png" id="12_kcwn3"]
+[ext_resource type="PackedScene" uid="uid://mkfslq4q1rpj" path="res://ui/ui_in_game.tscn" id="14_4418c"]
 
 [sub_resource type="Gradient" id="Gradient_omyy5"]
 interpolation_mode = 2
@@ -112,25 +113,6 @@ motion_mirroring = Vector2(1632, 0)
 position = Vector2(370, 822)
 texture = ExtResource("12_kcwn3")
 
-[node name="RondaActual" type="Label" parent="."]
-offset_left = 528.0
-offset_top = -416.0
-offset_right = 729.0
-offset_bottom = -349.0
-theme_override_font_sizes/font_size = 48
-text = "Ronda: 1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VidasRestantes" type="Label" parent="."]
-offset_left = -752.0
-offset_top = -416.0
-offset_right = -598.0
-offset_bottom = -349.0
-theme_override_colors/font_color = Color(0, 0.616985, 0.17758, 1)
-theme_override_font_sizes/font_size = 48
-text = "Vidas: 5"
-
 [node name="Sun" type="Sprite2D" parent="." node_paths=PackedStringArray("round_timer")]
 texture = SubResource("GradientTexture2D_qle1j")
 script = ExtResource("2_f62lb")
@@ -172,5 +154,10 @@ process_mode = 3
 visible = false
 top_level = true
 
+[node name="UiInGame" parent="." instance=ExtResource("14_4418c")]
+
+[connection signal="actualizar_maximo_de_vida" from="." to="UiInGame" method="_on_main_actualizar_maximo_de_vida"]
+[connection signal="actualizar_rondas" from="." to="UiInGame" method="_on_main_actualizar_rondas"]
+[connection signal="actualizar_vida" from="." to="UiInGame" method="_on_main_actualizar_vida"]
 [connection signal="timeout" from="RoundTimer" to="." method="_on_round_timer_timeout"]
 [connection signal="body_entered" from="Planet/Area2D" to="." method="_on_area_2d_body_entered"]

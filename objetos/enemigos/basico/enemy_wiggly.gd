@@ -27,7 +27,6 @@ func on_round_end(round : int):
 	velocity = Vector2.ZERO
 	speed = -speed * 10
 	process_x = false
-	process_y = false
 	despawn_timer.start()
 
 func _on_despawn_timer_timeout():

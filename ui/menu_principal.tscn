@@ -82,7 +82,6 @@ shape = SubResource("RectangleShape2D_f137b")
 [node name="BotonOpciones" type="Node2D" parent="."]
 position = Vector2(1191.55, 265.442)
 rotation = 0.261799
-scale = Vector2(1, 1)
 script = ExtResource("4_j77j8")
 
 [node name="Polygon2D2" type="Polygon2D" parent="BotonOpciones"]
@@ -116,7 +115,6 @@ shape = SubResource("RectangleShape2D_5w71v")
 [node name="BotonSalir" type="Node2D" parent="."]
 position = Vector2(440.453, 265.442)
 rotation = -0.261799
-scale = Vector2(1, 1)
 script = ExtResource("5_amrik")
 
 [node name="Polygon2D2" type="Polygon2D" parent="BotonSalir"]
