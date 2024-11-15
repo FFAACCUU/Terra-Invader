@@ -8,6 +8,7 @@ var spawn_points := []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBus.connect("round_end", on_round_end)
+	SignalBus.connect("game_over", on_round_end)
 	SignalBus.connect("round_start", on_round_start)
 	
 	for i in get_children():

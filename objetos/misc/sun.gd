@@ -4,10 +4,13 @@ extends Sprite2D
 
 var is_done : bool = false
 
+var is_game_over : bool = false
+
 func _ready():
 	position = Vector2(0.0, -480.0)
 	SignalBus.connect("round_start", _on_round_start)
 	SignalBus.connect("round_end", _on_round_end)
+	SignalBus.connect("game_over", _on_game_over)
 
 func _process(delta):
 	var position_tween : Tween = create_tween()
@@ -16,9 +19,15 @@ func _process(delta):
 	else:
 		position_tween.stop()
 		position = Vector2(0.0, -480.0)
+	
+	if is_game_over:
+		position_tween.stop()
 
 func _on_round_start():
 	is_done = false
 
 func _on_round_end(_round : int):
 	is_done = true
+
+func _on_game_over(_round):
+	is_game_over = true

@@ -16,6 +16,10 @@ var curve_dir : int = 1
 @export var process_x : bool = false
 @export var process_y : bool = false
 
+func _ready() -> void:
+	SignalBus.connect("round_end", on_round_end)
+	SignalBus.connect("game_over", on_round_end)
+
 func move(delta : float):
 	velocity = ((transform.y * do_the_curve()) + (transform.x * (speed + (factor * 0.1)))) * delta
 
@@ -25,6 +29,10 @@ func take_damage(ammount : float):
 
 func die():
 	# Codigo que se ejecuta al morir
+	pass
+
+func on_round_end(round : int):
+	# Codigo que se ejecuta al terminar una ronda
 	pass
 
 func do_the_curve() -> float:

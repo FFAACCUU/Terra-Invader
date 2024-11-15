@@ -3,9 +3,6 @@ extends Enemy
 @onready var hurt_box = $HurtBox
 @onready var despawn_timer = $DespawnTimer
 
-func _ready() -> void:
-	SignalBus.connect("round_end", on_round_end)
-
 func _process(delta):
 	calculate_curve_time(delta)
 

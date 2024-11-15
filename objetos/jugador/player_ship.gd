@@ -21,6 +21,7 @@ func _ready():
 	$CollisionShape2D.position.x = distance
 	set_all_upgrades()
 	SignalBus.connect("upgrade_get", _on_get_upgrade)
+	SignalBus.connect("game_over", _on_game_over)
 
 func _process(_delta):
 	if can_shoot && Input.is_action_pressed("Shoot"):
@@ -88,3 +89,8 @@ func instantiate_bullet(current_offset : float):
 	set_bullet_params(bullet_instance)
 	add_child(bullet_instance)
 	set_bullet_postion(bullet_instance, current_offset)
+
+func _on_game_over(_score):
+	can_shoot = false
+	$Polygon2D.position.x = 0.0
+	# Fly away
