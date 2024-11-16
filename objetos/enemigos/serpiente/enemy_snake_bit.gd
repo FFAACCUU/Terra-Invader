@@ -8,6 +8,8 @@ const HEAD_SCENE = preload("res://objetos/enemigos/serpiente/enemy_snake_head.ts
 var next_segment : Enemy
 
 func _ready() -> void:
+	SignalBus.connect("round_end", on_round_end)
+	SignalBus.connect("game_over", on_round_end)
 	if next_segment:
 		next_segment.connect("on_death", on_next_segment_death)
 

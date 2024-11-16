@@ -24,6 +24,7 @@ func _ready():
 	SignalBus.connect("game_over", _on_game_over)
 
 func _process(_delta):
+	
 	if can_shoot && Input.is_action_pressed("Shoot"):
 		shoot()
 
@@ -47,7 +48,8 @@ func set_all_upgrades():
 		strategy.apply_upgrade(self)
 
 func _physics_process(delta):
-	move(delta, get_global_mouse_position())
+		move(delta, get_global_mouse_position())
+	
 
 func move(delta : float, target : Vector2):
 	var vector = target - global_position
@@ -93,4 +95,4 @@ func instantiate_bullet(current_offset : float):
 func _on_game_over(_score):
 	can_shoot = false
 	$Polygon2D.position.x = 0.0
-	# Fly away
+	call_deferred("queue_free")
