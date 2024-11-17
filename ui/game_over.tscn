@@ -180,10 +180,10 @@ color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-4.46295, -16.5539, 141.522, -17.3022, 141.542, 20.9862, 141.705, 63.5052, -4.6243, 63.6014, -4.74002, 22.4926)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BotonMenuPrincipal"]
-offset_left = -73.8157
-offset_top = -34.4729
-offset_right = 224.184
-offset_bottom = 53.5271
+offset_left = -74.0
+offset_top = -34.0
+offset_right = 228.0
+offset_bottom = 54.0
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[center] MAIN MENU"
