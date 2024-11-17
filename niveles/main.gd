@@ -32,3 +32,4 @@ func _on_round_timer_timeout():
 
 func _on_game_over(_score):
 	planet.queue_free()
+	get_tree().change_scene_to_file("res://ui/game_over.tscn")

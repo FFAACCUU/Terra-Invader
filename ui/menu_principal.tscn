@@ -6,11 +6,11 @@
 [ext_resource type="Script" path="res://ui/boton_opciones.gd" id="4_j77j8"]
 [ext_resource type="Script" path="res://ui/boton_salir.gd" id="5_amrik"]
 
-[sub_resource type="Gradient" id="Gradient_a5204"]
+[sub_resource type="Gradient" id="Gradient_b682a"]
 colors = PackedColorArray(0.415686, 0.447059, 1, 1, 0.984314, 0.835294, 0.890196, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_acemc"]
-gradient = SubResource("Gradient_a5204")
+gradient = SubResource("Gradient_b682a")
 
 [sub_resource type="Gradient" id="Gradient_wjt8d"]
 interpolation_mode = 1

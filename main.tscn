@@ -29,26 +29,26 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[sub_resource type="Gradient" id="Gradient_ic6fo"]
+[sub_resource type="Gradient" id="Gradient_lmlig"]
 interpolation_color_space = 1
 offsets = PackedFloat32Array(0.0324675, 0.66, 0.7)
 colors = PackedColorArray(0, 0.172549, 1, 1, 0.173019, 0.466427, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_74nim"]
-gradient = SubResource("Gradient_ic6fo")
+gradient = SubResource("Gradient_lmlig")
 width = 96
 height = 96
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 
-[sub_resource type="Gradient" id="Gradient_glget"]
+[sub_resource type="Gradient" id="Gradient_4w6ig"]
 interpolation_color_space = 1
 offsets = PackedFloat32Array(0.0324675, 0.66, 0.7)
 colors = PackedColorArray(0, 0.45098, 0.741176, 0.709804, 0.482353, 0.623529, 1, 0.564706, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_fauu6"]
-gradient = SubResource("Gradient_glget")
+gradient = SubResource("Gradient_4w6ig")
 width = 96
 height = 96
 fill = 1
