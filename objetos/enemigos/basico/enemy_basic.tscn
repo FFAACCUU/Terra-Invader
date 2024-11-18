@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba738qi6kprqt"]
+[gd_scene load_steps=6 format=3 uid="uid://ba738qi6kprqt"]
 
 [ext_resource type="Script" path="res://objetos/enemigos/basico/enemy_basic.gd" id="1_hw2ha"]
 [ext_resource type="Script" path="res://clases/hurtbox.gd" id="2_u7p3j"]
+[ext_resource type="Texture2D" uid="uid://ceqeq3gex7d0t" path="res://sprites/enemigos/Nairan - Bomber - Base.png" id="2_yqh38"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kt7i0"]
 
@@ -21,8 +22,15 @@ process_x = true
 material = SubResource("CanvasItemMaterial_kt7i0")
 rotation = -1.57079
 scale = Vector2(0.5, 0.5)
+color = Color(1, 1, 1, 0)
 offset = Vector2(24, -40)
 polygon = PackedVector2Array(-64, 64, -64, 56, -72, 56, -72, 40, -48, 40, -48, 32, -56, 32, -56, 40, -72, 40, -72, 24, -64, 24, -64, 16, -48, 16, -48, 8, 0, 8, 0, 16, 16, 16, 16, 24, 24, 24, 24, 40, 8, 40, 8, 32, 0, 32, 0, 40, 24, 40, 24, 56, 16, 56, 16, 64, 0, 64, 0, 56, -8, 56, -16, 64, -32, 64, -40, 56, -48, 56, -48, 64)
+
+[node name="Sprite2D" type="Sprite2D" parent="Polygon2D"]
+position = Vector2(1.90735e-06, 1.90735e-06)
+rotation = 3.14159
+scale = Vector2(3.62953, 3.62953)
+texture = ExtResource("2_yqh38")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)

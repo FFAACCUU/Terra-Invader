@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Upgrade" load_steps=6 format=3 uid="uid://cxbu81lydl85b"]
 
 [ext_resource type="Script" path="res://clases/upgrades/upgrade.gd" id="1_0hgw6"]
-[ext_resource type="Texture2D" uid="uid://6flllq0qgbl" path="res://icon.svg" id="1_ay62g"]
+[ext_resource type="Texture2D" uid="uid://v8g06od5yen2" path="res://sprites/habilidades/Multishot.png" id="1_7gxih"]
 [ext_resource type="Script" path="res://clases/upgrades/base_upgrade_strategy.gd" id="2_kbnf3"]
 [ext_resource type="Script" path="res://clases/upgrades/multishot.gd" id="4_ut71y"]
 
@@ -12,5 +12,5 @@ ammount_increase = 1
 [resource]
 script = ExtResource("1_0hgw6")
 upgrd_name = "Mas disparos"
-icon = ExtResource("1_ay62g")
+icon = ExtResource("1_7gxih")
 upgrade_resources = Array[ExtResource("2_kbnf3")]([SubResource("Resource_v3eio")])

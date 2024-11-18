@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Upgrade" load_steps=6 format=3 uid="uid://bvlmofiye6k10"]
 
-[ext_resource type="Texture2D" uid="uid://6flllq0qgbl" path="res://icon.svg" id="1_g44sa"]
+[ext_resource type="Texture2D" uid="uid://b8grj0pd58frr" path="res://sprites/habilidades/Daño.png" id="1_ve6d3"]
 [ext_resource type="Script" path="res://clases/upgrades/base_upgrade_strategy.gd" id="2_7famv"]
 [ext_resource type="Script" path="res://clases/upgrades/upgrade.gd" id="2_lk4i1"]
 [ext_resource type="Script" path="res://clases/upgrades/damage_up.gd" id="3_i8ky1"]
@@ -12,5 +12,5 @@ damage_increase = 2.5
 [resource]
 script = ExtResource("2_lk4i1")
 upgrd_name = "disparos mas potentes"
-icon = ExtResource("1_g44sa")
+icon = ExtResource("1_ve6d3")
 upgrade_resources = Array[ExtResource("2_7famv")]([SubResource("Resource_my6r5")])

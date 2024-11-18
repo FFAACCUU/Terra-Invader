@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ji55g00a7dti"]
+[gd_scene load_steps=7 format=3 uid="uid://ji55g00a7dti"]
 
 [ext_resource type="Script" path="res://objetos/enemigos/serpiente/enemy_snake_bit.gd" id="1_vhuou"]
+[ext_resource type="Texture2D" uid="uid://bdck8md5jo0rk" path="res://sprites/enemigos/Nairan - Scout - Base.png" id="2_2uret"]
 [ext_resource type="Script" path="res://clases/hurtbox.gd" id="2_pdcgj"]
 
 [sub_resource type="Curve" id="Curve_f2dhn"]
@@ -25,8 +26,14 @@ factor = 10000
 process_x = true
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(1, 1, 0, 1)
+color = Color(1, 1, 0, 0)
 polygon = PackedVector2Array(-24, -16, -16, -24, 16, -24, 24, -16, 24, 16, 16, 24, -16, 24, -24, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Polygon2D"]
+position = Vector2(7.10543e-15, 0)
+rotation = -3.36394
+scale = Vector2(2.03083, 2.03083)
+texture = ExtResource("2_2uret")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.12692e-05, 1.23978e-05)

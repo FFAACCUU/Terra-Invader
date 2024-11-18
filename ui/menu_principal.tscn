@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmq4l6fqp2ag6"]
+[gd_scene load_steps=13 format=3 uid="uid://dmq4l6fqp2ag6"]
 
 [ext_resource type="PackedScene" uid="uid://dlkosvyvata8f" path="res://objetos/jugador/player_ship.tscn" id="1_pjms3"]
 [ext_resource type="Script" path="res://clases/hurtbox.gd" id="2_na8y8"]
 [ext_resource type="Script" path="res://ui/boton_jugar.gd" id="2_uu3de"]
+[ext_resource type="Texture2D" uid="uid://do87vmnsgbsd0" path="res://sprites/botones/Caja 1.png" id="3_p4boe"]
 [ext_resource type="Script" path="res://ui/boton_opciones.gd" id="4_j77j8"]
 [ext_resource type="Script" path="res://ui/boton_salir.gd" id="5_amrik"]
 
@@ -25,7 +26,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f137b"]
-size = Vector2(152, 96)
+size = Vector2(156, 102)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5w71v"]
 size = Vector2(240, 96)
@@ -33,7 +34,7 @@ size = Vector2(240, 96)
 [node name="MenuPrincipal" type="Node2D"]
 
 [node name="Sky" type="Sprite2D" parent="."]
-position = Vector2(816.264, 480.253)
+position = Vector2(842, 500)
 rotation = 1.5708
 scale = Vector2(4, 1800)
 texture = SubResource("GradientTexture1D_acemc")
@@ -51,14 +52,15 @@ bullet_speed = 600.0
 position = Vector2(816, 216)
 script = ExtResource("2_uu3de")
 
-[node name="Polygon2D2" type="Polygon2D" parent="BotonJugar"]
-position = Vector2(-68, -24)
-polygon = PackedVector2Array(-8, -24, 144, -24, 144, 72, -8, 72)
-
 [node name="Polygon2D" type="Polygon2D" parent="BotonJugar"]
 position = Vector2(-68, -24)
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 polygon = PackedVector2Array(0, -16, 136, -16, 136, 64, 0, 64)
+
+[node name="Sprite2D" type="Sprite2D" parent="BotonJugar/Polygon2D"]
+position = Vector2(68, 24)
+scale = Vector2(0.170122, 0.230145)
+texture = ExtResource("3_p4boe")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BotonJugar"]
 offset_left = -80.0
@@ -84,14 +86,15 @@ position = Vector2(1191.55, 265.442)
 rotation = 0.261799
 script = ExtResource("4_j77j8")
 
-[node name="Polygon2D2" type="Polygon2D" parent="BotonOpciones"]
-position = Vector2(-112, -24)
-polygon = PackedVector2Array(-8, -24, 232, -24, 232, 72, -8, 72)
-
 [node name="Polygon2D" type="Polygon2D" parent="BotonOpciones"]
 position = Vector2(-112, -24)
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 polygon = PackedVector2Array(0, -16, 224, -16, 224, 64, 0, 64)
+
+[node name="Sprite2D" type="Sprite2D" parent="BotonOpciones/Polygon2D"]
+position = Vector2(112.579, 24.4226)
+scale = Vector2(0.23877, 0.244455)
+texture = ExtResource("3_p4boe")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BotonOpciones"]
 offset_left = -120.0
@@ -117,14 +120,15 @@ position = Vector2(440.453, 265.442)
 rotation = -0.261799
 script = ExtResource("5_amrik")
 
-[node name="Polygon2D2" type="Polygon2D" parent="BotonSalir"]
-position = Vector2(-68, -24)
-polygon = PackedVector2Array(-8, -24, 144, -24, 144, 72, -8, 72)
-
 [node name="Polygon2D" type="Polygon2D" parent="BotonSalir"]
 position = Vector2(-68, -24)
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 polygon = PackedVector2Array(0, -16, 136, -16, 136, 64, 0, 64)
+
+[node name="Sprite2D" type="Sprite2D" parent="BotonSalir/Polygon2D"]
+position = Vector2(68.3839, 24.6806)
+scale = Vector2(0.169075, 0.233829)
+texture = ExtResource("3_p4boe")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BotonSalir"]
 offset_left = -80.0

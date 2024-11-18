@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://clkhr55m7g6bh"]
+[gd_scene load_steps=22 format=3 uid="uid://clkhr55m7g6bh"]
 
 [ext_resource type="Script" path="res://fondo_en_movimiento.gd" id="1_l1xvc"]
 [ext_resource type="Texture2D" uid="uid://blrlbd2hgfyge" path="res://fondo/FondoAzul.png" id="2_kbrg7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://br0521a2tyj3v" path="res://fondo/Asteroide1.png" id="7_4e6hj"]
 [ext_resource type="PackedScene" uid="uid://dlkosvyvata8f" path="res://objetos/jugador/player_ship.tscn" id="8_6nitd"]
 [ext_resource type="Script" path="res://ui/boton_jugar.gd" id="9_x0cw3"]
+[ext_resource type="Texture2D" uid="uid://do87vmnsgbsd0" path="res://sprites/botones/Caja 1.png" id="10_153hq"]
 [ext_resource type="Script" path="res://clases/hurtbox.gd" id="10_gh7ml"]
 [ext_resource type="Script" path="res://ui/boton_salir.gd" id="11_424q0"]
 [ext_resource type="Script" path="res://boton_menu_principal.gd" id="12_w4gva"]
@@ -129,29 +130,30 @@ collision_mask = 10
 shape = SubResource("CircleShape2D_y7lsh")
 
 [node name="BotonRejugar" type="Node2D" parent="."]
-position = Vector2(788, 216)
+position = Vector2(816, 223)
 script = ExtResource("9_x0cw3")
-
-[node name="Polygon2D2" type="Polygon2D" parent="BotonRejugar"]
-position = Vector2(-68, -24)
-scale = Vector2(1.35, 1)
-polygon = PackedVector2Array(-8, -24, 144, -24, 144, 72, -8, 72)
 
 [node name="Polygon2D" type="Polygon2D" parent="BotonRejugar"]
 position = Vector2(-68, -24)
 scale = Vector2(1.35, 1)
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 polygon = PackedVector2Array(0, -16, 136, -16, 136, 64, 0, 64)
 
+[node name="Sprite2D" type="Sprite2D" parent="BotonRejugar/Polygon2D"]
+position = Vector2(50.3704, 24)
+scale = Vector2(0.148148, 0.226107)
+texture = ExtResource("10_153hq")
+
 [node name="RichTextLabel" type="RichTextLabel" parent="BotonRejugar"]
-offset_left = -80.0
+offset_left = -100.0
 offset_top = -35.0
-offset_right = 113.0
-offset_bottom = 53.0
+offset_right = 96.0
+offset_bottom = 29.0
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[center] REPLAY"
 scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="HurtBox" type="Area2D" parent="BotonRejugar" node_paths=PackedStringArray("owner_node")]
 collision_layer = 8
@@ -160,24 +162,23 @@ script = ExtResource("10_gh7ml")
 owner_node = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BotonRejugar/HurtBox"]
-position = Vector2(23.5, 0)
 shape = SubResource("RectangleShape2D_ph1aj")
 
 [node name="BotonMenuPrincipal" type="Node2D" parent="."]
-position = Vector2(1135, 265.442)
+position = Vector2(1118, 337)
 rotation = 0.860447
 script = ExtResource("12_w4gva")
-
-[node name="Polygon2D2" type="Polygon2D" parent="BotonMenuPrincipal"]
-position = Vector2(-68, -24)
-scale = Vector2(2.2, 1)
-polygon = PackedVector2Array(-8, -24, 144, -24, 144, 72, -8, 72)
 
 [node name="Polygon2D" type="Polygon2D" parent="BotonMenuPrincipal"]
 position = Vector2(-68, -24)
 scale = Vector2(2.2, 1)
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 polygon = PackedVector2Array(-4.46295, -16.5539, 141.522, -17.3022, 141.542, 20.9862, 141.705, 63.5052, -4.6243, 63.6014, -4.74002, 22.4926)
+
+[node name="Sprite2D" type="Sprite2D" parent="BotonMenuPrincipal/Polygon2D"]
+position = Vector2(68.3818, 25.0289)
+scale = Vector2(0.149311, 0.234918)
+texture = ExtResource("10_153hq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BotonMenuPrincipal"]
 offset_left = -74.0
@@ -188,6 +189,7 @@ theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[center] MAIN MENU"
 scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="HurtBox" type="Area2D" parent="BotonMenuPrincipal" node_paths=PackedStringArray("owner_node")]
 collision_layer = 8
@@ -200,18 +202,19 @@ position = Vector2(81.5645, -0.00012207)
 shape = SubResource("RectangleShape2D_s0w04")
 
 [node name="BotonSalir" type="Node2D" parent="."]
-position = Vector2(487, 265.442)
+position = Vector2(495, 393)
 rotation = -0.860447
 script = ExtResource("11_424q0")
 
-[node name="Polygon2D2" type="Polygon2D" parent="BotonSalir"]
-position = Vector2(-68, -24)
-polygon = PackedVector2Array(-8, -24, 144, -24, 144, 72, -8, 72)
-
 [node name="Polygon2D" type="Polygon2D" parent="BotonSalir"]
 position = Vector2(-68, -24)
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 polygon = PackedVector2Array(0, -16, 136, -16, 136, 64, 0, 64)
+
+[node name="Sprite2D" type="Sprite2D" parent="BotonSalir/Polygon2D"]
+position = Vector2(68.1455, 23.8748)
+scale = Vector2(0.150929, 0.224704)
+texture = ExtResource("10_153hq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BotonSalir"]
 offset_left = -80.0
@@ -222,6 +225,7 @@ theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[center] QUIT"
 scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="HurtBox" type="Area2D" parent="BotonSalir" node_paths=PackedStringArray("owner_node")]
 collision_layer = 8
