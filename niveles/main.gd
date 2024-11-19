@@ -31,5 +31,7 @@ func _on_round_timer_timeout():
 	SignalBus.emit_signal("round_end", current_round)
 
 func _on_game_over(_score):
-	planet.queue_free()
+	call_deferred("cambiar_de_escena")
+
+func cambiar_de_escena():
 	get_tree().change_scene_to_file("res://ui/game_over.tscn")

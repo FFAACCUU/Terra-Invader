@@ -6,11 +6,17 @@ extends CharacterBody2D
 @export var distance : float
 @export var speed : float = 0.05
 @export var bullet_scene : PackedScene
-@export var bullet_damage : float
-@export var bullet_speed : float
-@export var bullet_life_time : float
-@export var bullet_ammount : int
-@export var fire_rate : float = 0.6
+@export var base_bullet_damage : float
+@export var base_bullet_speed : float
+@export var base_bullet_life_time : float
+@export var base_bullet_ammount : int
+@export var base_fire_rate : float = 0.6
+
+@onready var bullet_damage : float = base_bullet_damage
+@onready var bullet_speed : float = base_bullet_speed
+@onready var bullet_life_time : float = base_bullet_life_time
+@onready var bullet_ammount : int = base_bullet_ammount
+@onready var fire_rate : float = base_fire_rate
 
 var can_shoot : bool = true
 

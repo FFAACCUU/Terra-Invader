@@ -46,7 +46,6 @@ texture = SubResource("GradientTexture2D_chasu")
 [node name="PlayerShip" parent="." instance=ExtResource("1_pjms3")]
 position = Vector2(816, 1667)
 distance = 1080.0
-bullet_speed = 600.0
 
 [node name="BotonJugar" type="Node2D" parent="."]
 position = Vector2(816, 216)

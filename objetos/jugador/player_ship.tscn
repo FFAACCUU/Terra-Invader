@@ -13,11 +13,10 @@ motion_mode = 1
 script = ExtResource("1_2tniu")
 distance = 100.0
 bullet_scene = ExtResource("2_2tg6h")
-bullet_damage = 7.5
-bullet_speed = 400.0
-bullet_life_time = 5.0
-bullet_ammount = 1
-fire_rate = 0.8
+base_bullet_damage = 5.0
+base_bullet_speed = 400.0
+base_bullet_life_time = 5.0
+base_bullet_ammount = 1
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 rotation = 1.5708

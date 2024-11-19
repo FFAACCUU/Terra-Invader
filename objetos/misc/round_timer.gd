@@ -6,7 +6,8 @@ func  _ready():
 	SignalBus.connect("game_over", _on_game_over)
 
 func on_round_end(round : int):
-	wait_time += 0.1
+	wait_time += 2.5
+	print(wait_time)
 
 func on_round_start():
 	start()
