@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://be33myiabs1u4"
+path="res://.godot/imported/Daño a enemigo.mp3-3d57d022082636592dfc5d3a1360b137.mp3str"
+
+[deps]
+
+source_file="res://sonidos/Daño a enemigo.mp3"
+dest_files=["res://.godot/imported/Daño a enemigo.mp3-3d57d022082636592dfc5d3a1360b137.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

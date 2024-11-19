@@ -1,21 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://bf5uur652nwyl"]
+[gd_scene load_steps=10 format=3 uid="uid://bf5uur652nwyl"]
 
 [ext_resource type="Script" path="res://clases/hurtbox.gd" id="1_eoi7y"]
 [ext_resource type="Script" path="res://objetos/enemigos/basico/enemy_wiggly.gd" id="1_t84pp"]
 [ext_resource type="Texture2D" uid="uid://d0mruwtehjp7i" path="res://sprites/enemigos/Nairan - Support Ship - Base.png" id="2_yft6s"]
+[ext_resource type="AudioStream" uid="uid://be33myiabs1u4" path="res://sonidos/Daño a enemigo.mp3" id="4_ta5ft"]
+[ext_resource type="AudioStream" uid="uid://c3n4anctthlp2" path="res://sonidos/Muerte enemigo.mp3" id="5_2fie8"]
 
 [sub_resource type="Curve" id="Curve_8s7mx"]
 min_value = -1.0
 _data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kt7i0"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_802gw"]
-size = Vector2(36, 12)
+size = Vector2(36, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32fiv"]
-size = Vector2(36, 12)
+size = Vector2(36, 17)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_clfvt"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("4_ta5ft")
 
 [node name="EnemyWiggly" type="CharacterBody2D"]
 collision_layer = 2
@@ -28,23 +33,14 @@ movement_curve = SubResource("Curve_8s7mx")
 factor = 7500
 process_x = true
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-material = SubResource("CanvasItemMaterial_kt7i0")
-position = Vector2(-0.0078125, 0)
-rotation = -1.57079
-scale = Vector2(0.5, 0.5)
-color = Color(0.968627, 0, 0.980392, 0)
-offset = Vector2(-1.99971, 6.01579)
-polygon = PackedVector2Array(-34, 0.000213329, -34.0001, -13.9998, -30.0001, -13.9998, -18.0004, -16, -18.0003, -8.00004, 21.9997, -8.00029, 21.9996, -16.0003, -18.0004, -16, -30.0003, -14, -30.0001, -17.9998, -18.0004, -22, 21.9996, -22.0003, 33.9996, -18.0004, 33.9997, -14.0004, 37.9997, -14.0004, 37.9997, -0.00039053, 33.9998, 1.99963, 25.9998, 1.99968, 23.9998, 7.9997, 21.9998, 1.99971, 19.9998, 5.99972, 17.9998, 1.99973, -14.0002, 1.99994, -16.0002, 5.99995, -18.0002, 1.99996, -20.0002, 7.99997, -22.0002, 1.99999, -30.0002, 2.00004)
-
-[node name="Sprite2D" type="Sprite2D" parent="Polygon2D"]
-position = Vector2(0, 0.015625)
-rotation = 3.14159
-scale = Vector2(3.00823, 3.00823)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 4.90186e-08)
+rotation = 1.5708
+scale = Vector2(1.50411, 1.50411)
 texture = ExtResource("2_yft6s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
+position = Vector2(-4.5, -1.5686e-05)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_802gw")
 
@@ -55,13 +51,23 @@ script = ExtResource("1_eoi7y")
 owner_node = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-2, 0)
+position = Vector2(-4.5, -1.5686e-05)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_32fiv")
 
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="AudioHit" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_clfvt")
+volume_db = -10.0
+
+[node name="AudioDeath" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_2fie8")
+volume_db = -8.0
 
 [connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

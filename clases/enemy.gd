@@ -16,6 +16,10 @@ var curve_dir : int = 1
 @export var process_x : bool = false
 @export var process_y : bool = false
 
+@onready var audio_hit = %AudioHit
+@onready var audio_death = %AudioDeath
+@onready var collision_shape = $CollisionShape2D
+
 func _ready() -> void:
 	SignalBus.connect("round_end", on_round_end)
 	SignalBus.connect("game_over", on_round_end)
@@ -49,9 +53,18 @@ func calculate_curve_time(delta : float):
 		elif time < 0: curve_dir = 1
 		time = clamp(time, 0, 1)
 
+func play_death_sound():
+	audio_death.play()
+
+func play_hit_sound():
+	audio_hit.play()
+
 func curve_movement() -> float:
 	if process_x:
 		return movement_curve.sample(time) * factor
 	if process_y:
 		return movement_curve.sample(time / 2) * (factor / 2)
 	return 0.0
+
+func disable_collision_shape():
+	collision_shape.disabled = true

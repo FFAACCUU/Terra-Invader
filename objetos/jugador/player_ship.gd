@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @onready var bullet_marker = %BulletMarker
 @onready var shoot_timer = $ShootTimer
+@onready var audio_disparo = $AudioDisparo
+@onready var audio_upgrade = $UpgradeGet
+
 
 @export var distance : float
 @export var speed : float = 0.05
@@ -35,6 +38,7 @@ func _process(_delta):
 		shoot()
 
 func _on_get_upgrade(upgrade : Upgrade):
+	audio_upgrade.play()
 	upgrades.append_array(upgrade.upgrade_resources)
 	set_current_upgrades(upgrade.upgrade_resources)
 
@@ -68,6 +72,7 @@ func move(delta : float, target : Vector2):
 func shoot():
 	can_shoot = false
 	create_bullet(5.0)
+	audio_disparo.play()
 	shoot_timer.start(clamp(fire_rate, 0.01, 100.0))
 
 func create_bullet(offset : float): #Dispara la misma cantidad de balas que bullet ammoun y calcula un offset para cada una.

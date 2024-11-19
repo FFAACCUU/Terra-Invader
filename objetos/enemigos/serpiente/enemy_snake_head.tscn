@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgn3rgifq01fe"]
+[gd_scene load_steps=10 format=3 uid="uid://cgn3rgifq01fe"]
 
 [ext_resource type="Script" path="res://objetos/enemigos/serpiente/enemy_snake_bit.gd" id="1_16avc"]
 [ext_resource type="Script" path="res://clases/hurtbox.gd" id="2_22ja4"]
 [ext_resource type="Texture2D" uid="uid://cd5xshyc4pdcn" path="res://sprites/enemigos/Nairan - Torpedo Ship - Base.png" id="2_m4j6x"]
+[ext_resource type="AudioStream" uid="uid://be33myiabs1u4" path="res://sonidos/Daño a enemigo.mp3" id="4_0s1uj"]
+[ext_resource type="AudioStream" uid="uid://c3n4anctthlp2" path="res://sonidos/Muerte enemigo.mp3" id="5_32mjf"]
 
 [sub_resource type="Curve" id="Curve_f2dhn"]
 _data = [Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -13,6 +15,11 @@ size = Vector2(48, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ulvg"]
 size = Vector2(48, 48)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eopms"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("4_0s1uj")
 
 [node name="EnemySnakeHead" type="CharacterBody2D"]
 collision_layer = 2
@@ -25,14 +32,9 @@ movement_curve = SubResource("Curve_f2dhn")
 factor = 10000
 process_x = true
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-rotation = 3.00037
-color = Color(1, 1, 0, 0)
-offset = Vector2(0, 4)
-polygon = PackedVector2Array(-32, -16, -16, -32, 0, -32, 0, -28, -8, -20, 0, -12, 8, -20, 0, -28, 0, -32, 16, -32, 32, -16, 24, 16, 16, 24, -16, 24, -24, 16)
-
-[node name="Sprite2D" type="Sprite2D" parent="Polygon2D"]
-position = Vector2(-1.90735e-06, -1.90735e-06)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.15683e-06, 1.6199e-06)
+rotation = 3.14159
 scale = Vector2(2.83511, 2.83511)
 texture = ExtResource("2_m4j6x")
 
@@ -56,6 +58,16 @@ shape = SubResource("RectangleShape2D_5ulvg")
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="AudioHit" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_eopms")
+volume_db = -10.0
+
+[node name="AudioDeath" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_32mjf")
+volume_db = -8.0
 
 [connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

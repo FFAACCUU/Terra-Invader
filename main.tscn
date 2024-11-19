@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cy1ooxcfun7ue"]
+[gd_scene load_steps=24 format=3 uid="uid://cy1ooxcfun7ue"]
 
 [ext_resource type="PackedScene" uid="uid://dlkosvyvata8f" path="res://objetos/jugador/player_ship.tscn" id="1_7ulvc"]
 [ext_resource type="Script" path="res://niveles/main.gd" id="1_ekwdi"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://kkvcl8tmed31" path="res://ui/menu_mejoras.tscn" id="11_biqr2"]
 [ext_resource type="Texture2D" uid="uid://br0521a2tyj3v" path="res://fondo/Asteroide1.png" id="12_kcwn3"]
 [ext_resource type="PackedScene" uid="uid://mkfslq4q1rpj" path="res://ui/ui_in_game.tscn" id="14_4418c"]
+[ext_resource type="AudioStream" uid="uid://yqflvs5lcovm" path="res://sonidos/Daño recibido.mp3" id="15_lgt5o"]
+[ext_resource type="AudioStream" uid="uid://caq8db516uicb" path="res://sonidos/Ambiente.mp3" id="16_mcvto"]
 
 [sub_resource type="Gradient" id="Gradient_omyy5"]
 interpolation_mode = 2
@@ -157,6 +159,15 @@ visible = false
 top_level = true
 
 [node name="UiInGame" parent="." instance=ExtResource("14_4418c")]
+
+[node name="DamageAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_lgt5o")
+volume_db = -5.0
+
+[node name="Ambiente" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_mcvto")
+volume_db = -20.0
+autoplay = true
 
 [connection signal="actualizar_maximo_de_vida" from="." to="UiInGame" method="_on_main_actualizar_maximo_de_vida"]
 [connection signal="actualizar_rondas" from="." to="UiInGame" method="_on_main_actualizar_rondas"]

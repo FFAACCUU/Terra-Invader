@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dmq4l6fqp2ag6"]
+[gd_scene load_steps=14 format=3 uid="uid://dmq4l6fqp2ag6"]
 
 [ext_resource type="PackedScene" uid="uid://dlkosvyvata8f" path="res://objetos/jugador/player_ship.tscn" id="1_pjms3"]
 [ext_resource type="Script" path="res://clases/hurtbox.gd" id="2_na8y8"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://do87vmnsgbsd0" path="res://sprites/botones/Caja 1.png" id="3_p4boe"]
 [ext_resource type="Script" path="res://ui/boton_opciones.gd" id="4_j77j8"]
 [ext_resource type="Script" path="res://ui/boton_salir.gd" id="5_amrik"]
+[ext_resource type="AudioStream" uid="uid://dox1fapyscyim" path="res://sonidos/Ambiente menú.mp3" id="7_qmq1c"]
 
 [sub_resource type="Gradient" id="Gradient_b682a"]
 colors = PackedColorArray(0.415686, 0.447059, 1, 1, 0.984314, 0.835294, 0.890196, 1)
@@ -147,6 +148,11 @@ owner_node = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BotonSalir/HurtBox"]
 shape = SubResource("RectangleShape2D_f137b")
+
+[node name="Ambiente" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_qmq1c")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="elegir_jugar" from="BotonJugar" to="BotonOpciones" method="_on_boton_jugar_elegir_jugar"]
 [connection signal="elegir_jugar" from="BotonJugar" to="BotonSalir" method="_on_boton_jugar_elegir_jugar"]

@@ -10,6 +10,7 @@ signal actualizar_rondas(cantidad : int)
 
 @onready var planet = %Planet
 @onready var round_timer = %RoundTimer
+@onready var damage_audio = $DamageAudio
 
 func _ready():
 	SignalBus.connect("game_over", _on_game_over)
@@ -21,6 +22,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	body.queue_free()
 	vida -= 1
 	actualizar_vida.emit(vida)
+	damage_audio.play()
 	if vida <= 0:
 		vida = 0
 		SignalBus.game_over.emit(current_round)
