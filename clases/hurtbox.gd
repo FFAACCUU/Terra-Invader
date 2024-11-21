@@ -3,6 +3,7 @@ class_name HurtBox
 
 @export var owner_node : Node
 
+signal damaged(ammount)
+
 func _on_area_entered(hitbox : HitBox):
-	if owner_node.has_method("take_damage"):
-		owner_node.take_damage(hitbox.damage)
+	damaged.emit(hitbox.damage)

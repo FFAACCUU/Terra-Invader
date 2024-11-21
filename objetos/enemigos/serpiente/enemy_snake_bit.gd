@@ -18,24 +18,17 @@ func on_next_segment_death():
 
 func turn_into_head():
 	var head_instance := HEAD_SCENE.instantiate()
-	head_instance.global_position = global_position
-	get_tree().root.add_child(head_instance)
+	head_instance.global_position = position
+	get_parent().add_child(head_instance)
 	queue_free()
-
-func _process(delta):
-	calculate_curve_time(delta)
 
 func _physics_process(delta: float) -> void:
 	look_at(Vector2(816.0, 480.0))
-	move(delta)
 	
 	move_and_slide()
 
-func take_damage(ammount : float):
-	health -= ammount
+func on_damage_received(ammount : float):
 	play_hit_sound()
-	if health <= 0:
-		die()
 
 func die():
 	on_death.emit()
@@ -44,12 +37,6 @@ func die():
 	call_deferred("disable_collision_shape")
 	hurt_box.queue_free()
 	despawn_timer.wait_time = 0.2
-	despawn_timer.start()
-
-func on_round_end(round : int):
-	velocity = Vector2.ZERO
-	speed = -speed * 20
-	process_x = false
 	despawn_timer.start()
 
 func _on_despawn_timer_timeout():

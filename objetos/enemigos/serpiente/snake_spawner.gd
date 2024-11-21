@@ -14,12 +14,14 @@ func _ready():
 
 func spawn_snake_part(part : PackedScene):
 	var part_instance = part.instantiate()
-	part_instance.global_position = global_position
+	
+	part_instance.global_position = position
 	
 	if last_part != null:
 		part_instance.next_segment = last_part
 	
-	get_tree().root.add_child(part_instance)
+	get_parent().add_child(part_instance)
+	
 	last_part = part_instance
 
 func _on_timer_timeout():

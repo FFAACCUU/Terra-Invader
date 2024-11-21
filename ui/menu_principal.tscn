@@ -46,7 +46,8 @@ texture = SubResource("GradientTexture2D_chasu")
 
 [node name="PlayerShip" parent="." instance=ExtResource("1_pjms3")]
 position = Vector2(816, 1667)
-distance = 1080.0
+scale = Vector2(5, 5)
+distance = 216.0
 
 [node name="BotonJugar" type="Node2D" parent="."]
 position = Vector2(816, 216)
@@ -157,5 +158,8 @@ autoplay = true
 [connection signal="elegir_jugar" from="BotonJugar" to="BotonOpciones" method="_on_boton_jugar_elegir_jugar"]
 [connection signal="elegir_jugar" from="BotonJugar" to="BotonSalir" method="_on_boton_jugar_elegir_jugar"]
 [connection signal="area_entered" from="BotonJugar/HurtBox" to="BotonJugar/HurtBox" method="_on_area_entered"]
+[connection signal="damaged" from="BotonJugar/HurtBox" to="BotonJugar" method="_on_hurt_box_damaged"]
 [connection signal="area_entered" from="BotonOpciones/HurtBox" to="BotonOpciones/HurtBox" method="_on_area_entered"]
+[connection signal="damaged" from="BotonOpciones/HurtBox" to="BotonOpciones" method="_on_hurt_box_damaged"]
 [connection signal="area_entered" from="BotonSalir/HurtBox" to="BotonSalir/HurtBox" method="_on_area_entered"]
+[connection signal="damaged" from="BotonSalir/HurtBox" to="BotonSalir" method="_on_hurt_box_damaged"]

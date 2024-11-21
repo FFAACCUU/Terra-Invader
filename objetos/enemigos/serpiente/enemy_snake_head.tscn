@@ -1,14 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgn3rgifq01fe"]
+[gd_scene load_steps=12 format=3 uid="uid://cgn3rgifq01fe"]
 
 [ext_resource type="Script" path="res://objetos/enemigos/serpiente/enemy_snake_bit.gd" id="1_16avc"]
 [ext_resource type="Script" path="res://clases/hurtbox.gd" id="2_22ja4"]
 [ext_resource type="Texture2D" uid="uid://cd5xshyc4pdcn" path="res://sprites/enemigos/Nairan - Torpedo Ship - Base.png" id="2_m4j6x"]
 [ext_resource type="AudioStream" uid="uid://be33myiabs1u4" path="res://sonidos/Daño a enemigo.mp3" id="4_0s1uj"]
 [ext_resource type="AudioStream" uid="uid://c3n4anctthlp2" path="res://sonidos/Muerte enemigo.mp3" id="5_32mjf"]
-
-[sub_resource type="Curve" id="Curve_f2dhn"]
-_data = [Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 1
+[ext_resource type="Script" path="res://componentes/npc_movement_component.gd" id="6_ohub6"]
+[ext_resource type="Script" path="res://componentes/health_component.gd" id="7_8pmgv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ww5p7"]
 size = Vector2(48, 48)
@@ -21,16 +19,15 @@ random_pitch = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("4_0s1uj")
 
+[sub_resource type="Curve" id="Curve_l31j2"]
+_data = [Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
 [node name="EnemySnakeHead" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_16avc")
-max_health = 15.0
-speed = 1000.0
-movement_curve = SubResource("Curve_f2dhn")
-factor = 10000
-process_x = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.15683e-06, 1.6199e-06)
@@ -69,5 +66,19 @@ unique_name_in_owner = true
 stream = ExtResource("5_32mjf")
 volume_db = -8.0
 
+[node name="NPCMovementComponent" type="Node" parent="." node_paths=PackedStringArray("npc_node")]
+script = ExtResource("6_ohub6")
+npc_node = NodePath("..")
+speed = 3000.0
+movement_curve = SubResource("Curve_l31j2")
+factor = 10000
+process_x = true
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("the_node")]
+script = ExtResource("7_8pmgv")
+the_node = NodePath("..")
+max_health = 15.0
+
 [connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
+[connection signal="damaged" from="HurtBox" to="HealthComponent" method="_on_hurt_box_damaged"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

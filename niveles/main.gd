@@ -36,4 +36,6 @@ func _on_game_over(_score):
 	call_deferred("cambiar_de_escena")
 
 func cambiar_de_escena():
+	for child in get_children():
+		child.queue_free()
 	get_tree().change_scene_to_file("res://ui/game_over.tscn")

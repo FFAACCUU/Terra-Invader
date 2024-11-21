@@ -237,5 +237,8 @@ owner_node = NodePath("..")
 shape = SubResource("RectangleShape2D_cbm6c")
 
 [connection signal="area_entered" from="BotonRejugar/HurtBox" to="BotonRejugar/HurtBox" method="_on_area_entered"]
+[connection signal="damaged" from="BotonRejugar/HurtBox" to="BotonRejugar" method="_on_hurt_box_damaged"]
 [connection signal="area_entered" from="BotonMenuPrincipal/HurtBox" to="BotonMenuPrincipal/HurtBox" method="_on_area_entered"]
+[connection signal="damaged" from="BotonMenuPrincipal/HurtBox" to="BotonMenuPrincipal" method="_on_hurt_box_damaged"]
 [connection signal="area_entered" from="BotonSalir/HurtBox" to="BotonSalir/HurtBox" method="_on_area_entered"]
+[connection signal="damaged" from="BotonSalir/HurtBox" to="BotonSalir" method="_on_hurt_box_damaged"]

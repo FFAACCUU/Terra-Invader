@@ -19,7 +19,7 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	global_position += transform.x * speed * delta
-	speed -= speed * 0.01
+	speed -= speed * 0.008
 
 func set_parameters(new_scale : Vector2, dmg : float, spd : float, lftm : float):
 	damage = dmg

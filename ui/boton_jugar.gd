@@ -10,6 +10,8 @@ func take_damage(_ammount : float):
 		
 		call_deferred("cambiar_escena")
 
-
 func cambiar_escena():
 	get_tree().change_scene_to_file("res://main.tscn")
+
+func _on_hurt_box_damaged(ammount):
+	take_damage(ammount)

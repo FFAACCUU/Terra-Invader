@@ -2,11 +2,11 @@ extends Node2D
 
 @onready var main = get_node("/root/Main")
 
-var enemigo_escena : Array = [preload("res://objetos/enemigos/basico/enemy_basic.tscn")]
+var enemigo_escena : Array = [preload("res://objetos/enemigos/serpiente/snake_spawner.tscn")]
 var spawn_points := []
 
 var set_of_rounds : int = 0
-var dificulty : int = 1
+var dificulty : int = 4
 
 @onready var timer = $Timer
 
